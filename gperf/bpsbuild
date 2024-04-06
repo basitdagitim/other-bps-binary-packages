@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+name="gperf"
+version="3.1"
+description="Perfect hash function generator."
+source="https://ftp.gnu.org/gnu/gperf/gperf-$version.tar.gz"
+depends=""
+group="sys.apps"
+
+setup(){
+    $SOURCEDIR/configure --prefix=/usr \
+        --libdir=/usr/lib64
+}
+build(){
+    make
+}
+
+package(){
+    make install DESTDIR=$DESTDIR
+}
