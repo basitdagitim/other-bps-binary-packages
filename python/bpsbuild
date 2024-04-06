@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 name="python"
-version="3.11.1"
+version="3.11.8"
 description="Python meta package"
 source="https://www.python.org/ftp/python/${version}/Python-${version}.tar.xz"
 depends=""
