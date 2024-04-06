@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+name="py3-setuptools"
+version="69.0.3"
+description="Collection of enhancements to the Python3 distutils"
+source="https://github.com/pypa/setuptools/archive/refs/tags/v${version}.tar.gz"
+depends="python,py3-markupsafe"
+group="dev.python"
+
+setup(){
+	echo ""
+}
+
+build(){
+	cd $SOURCEDIR
+    python3 setup.py build
+}
+
+package(){
+	mkdir -p build/scripts-3.11
+    python3 setup.py install --prefix=/usr --root="$DESTDIR"  --optimize=1
+}
+

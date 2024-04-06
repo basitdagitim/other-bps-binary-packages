@@ -1,0 +1,2 @@
+sed -i "/nobody/d" /etc/group
+sed -i "/nobody/d" /etc/passwd

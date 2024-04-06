@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+name="perl"
+version="5.38.0"
+description="A highly capable, feature-rich programming language"
+source="https://www.cpan.org/src/5.0/perl-$version.tar.gz"
+depends="gdbm,libxcrypt,libnsl"
+group="dev.lang"
+
+setup(){
+	cd $SOURCEDIR
+    _basepath="${version%.*}"
+    $SOURCEDIR/Configure -des -Dusethreads -Duseshrplib -Doptimize="${CFLAGS}" \
+        -Dprefix=/usr -Dvendorprefix=/usr \
+        -Dprivlib=/usr/share/perl5/core_perl \
+        -Darchlib=/usr/lib64/perl5/$_basepath/core_perl \
+        -Dsitelib=/usr/share/perl5/site_perl \
+        -Dsitearch=/usr/lib64/perl5/$_basepath/site_perl \
+        -Dvendorlib=/usr/share/perl5/vendor_perl \
+        -Dvendorarch=/usr/lib64/perl5/$_basepath/vendor_perl \
+        -Dscriptdir=/usr/bin/core_perl \
+        -Dsitescript=/usr/bin/site_perl \
+        -Dvendorscript=/usr/bin/vendor_perl \
+        -Dinc_version_list=none \
+        -Dman1ext=1perl -Dman3ext=3perl -Dcccdlflags='-fPIC' \
+        -Dlddlflags="-shared ${LDFLAGS}" -Dldflags="${LDFLAGS}"
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install DESTDIR=$DESTDIR
+    rm -f ${DESTDIR}/*[0-9]
+}
+

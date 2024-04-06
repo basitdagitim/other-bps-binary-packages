@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+name="texinfo"
+version="7.1"
+description="GNU documentation system for on-line information and printed output"
+source="https://ftp.gnu.org/gnu/texinfo/texinfo-$version.tar.xz"
+depends="ncurses,perl,gzip"
+group="sys.apps"
+
+
+setup(){
+	cp -prvf $PACKAGEDIR/files/ /tmp/bps/build/
+    cd $SOURCEDIR
+    ./configure --prefix=/usr 
+}
+
+build(){
+    make
+}
+
+package(){
+    make DESTDIR=${DESTDIR} install
+	install -dm755 "$DESTDIR"/usr/share/libalpm/hooks/
+	install -m644 ../files/texinfo-{install,remove}.hook "$DESTDIR"/usr/share/libalpm/hooks/
+
+}
+
