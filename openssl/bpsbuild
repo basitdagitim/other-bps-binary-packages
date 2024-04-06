@@ -12,18 +12,17 @@ setup()
 	cd $SOURCEDIR
 	./config --prefix=/usr  \
          --openssldir=/etc/ssl \
-         --libdir=/usr/lib64          \
-         shared                \
-         zlib-dynamic \
-         no-docs
+         --libdir=/usr/lib64 \
+         shared linux-x86_64
 }
 build()
 {
-	make 
+	make depend
+	make
 }
 package()
 {
-	 mkdir -p "${DESTDIR}/etc/ssl/" "${DESTDIR}/sbin/"
+	mkdir -p "${DESTDIR}/etc/ssl/" "${DESTDIR}/sbin/"
 	install ../update-certdata "${DESTDIR}/sbin/update-certdata"
 	install ../cacert.pem "${DESTDIR}/etc/ssl/cert.pem"
 	make DESTDIR="${DESTDIR}" \

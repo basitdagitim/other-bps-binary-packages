@@ -1,22 +1,27 @@
 #!/usr/bin/env bash
 name="py3-setuptools"
 version="69.0.3"
-description="Collection of enhancements to the Python3 distutils"
-source="https://github.com/pypa/setuptools/archive/refs/tags/v${version}.tar.gz"
-depends="python,py3-markupsafe"
+url="https://pypi.org/project/setuptools/"
+description="Easily download, build, install, upgrade, and uninstall Python packages"
+source="https://pypi.io/packages/source/s/setuptools/setuptools-$version.tar.gz"
+depends="python"
 group="dev.python"
+export SETUPTOOLS_INSTALL_WINDOWS_SPECIFIC_FILES=0
 
 setup(){
-	echo ""
+cd $SOURCEDIR
+    # Fix post-release tag
+	  sed -e '/tag_build = .post/d' \
+  	    -e '/tag_date = 1/d' \
+	      -i setup.cfg
 }
 
 build(){
-	cd $SOURCEDIR
     python3 setup.py build
 }
 
 package(){
 	mkdir -p build/scripts-3.11
-    python3 setup.py install --prefix=/usr --root="$DESTDIR"  --optimize=1
+    python3 setup.py install --prefix=/usr --root="${DESTDIR}" --install-lib=/usr/lib64/ --optimize=1 --skip-build
 }
 
