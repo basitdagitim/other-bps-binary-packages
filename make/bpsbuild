@@ -8,7 +8,8 @@ group="sys.devel"
 
 
 setup(){
-    ../${name}-${version}/configure --prefix=/usr \
+	cd $SOURCEDIR
+    ./configure --prefix=/usr \
         --libdir=/usr/lib64
 }
 
