@@ -3,7 +3,9 @@ name="python"
 version="3.11.8"
 description="Python meta package"
 source="https://www.python.org/ftp/python/${version}/Python-${version}.tar.xz"
-depends=""
+depends="bzip2,expat,gdbm,libffi,libnsl,libxcrypt,openssl,zlib"
+builddepend="tcl,sqlite,mpdecimal"
+
 group="dev.lang"
 
 setup(){

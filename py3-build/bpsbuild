@@ -1,25 +1,28 @@
 #!/usr/bin/env bash
 name="py3-build"
+release="2"
 version="1.2.1"
-url="https://github.com/pypa/build"
-description="A simple, correct Python build frontend"
+url="https://github.com/pypa/build/"
+description="Easily download, build, install, upgrade, and uninstall Python packages"
+license="GPLv3"
 source="https://github.com/pypa/build/archive/refs/tags/$version.tar.gz"
-depends="python"
+depends="python,py3-wheel"
+builddepend=""
+md5sums="d6230170909b380ee0dc1f77f96b3635"
 group="dev.python"
-export SETUPTOOLS_INSTALL_WINDOWS_SPECIFIC_FILES=0
+arch="x86_64"
 
 setup(){
-cd $SOURCEDIR
-
+	echo ""
 }
 
 build(){
-    echo ""
+	echo ""
 }
 
 package(){
-	mkdir -p $DESTDIR/usr/lib64/python3/build
+	cd $SOURCEDIR
+    mkdir -p $DESTDIR/usr/lib64/python3/build
     cp -prfv src/build/* $DESTDIR/usr/lib64/python3/build
-
 }
 

@@ -1,27 +1,33 @@
 #!/usr/bin/env bash
 name="py3-setuptools"
-version="69.0.3"
+version="69.2.0"
 url="https://pypi.org/project/setuptools/"
 description="Easily download, build, install, upgrade, and uninstall Python packages"
+license="GPLv3"
 source="https://pypi.io/packages/source/s/setuptools/setuptools-$version.tar.gz"
 depends="python"
+makedepends="" 
+md5sums="b82de45aaa6b9bb911226660212ebb83"
 group="dev.python"
+arch="x86_64"
+
 export SETUPTOOLS_INSTALL_WINDOWS_SPECIFIC_FILES=0
 
+
 setup(){
-cd $SOURCEDIR
     # Fix post-release tag
-	  sed -e '/tag_build = .post/d' \
-  	    -e '/tag_date = 1/d' \
+	  sed -e "/tag_build = .post/d" \
+  	    -e "/tag_date = 1/d" \
 	      -i setup.cfg
 }
 
+
 build(){
+	cd $SOURCEDIR
     python3 setup.py build
 }
 
 package(){
-	mkdir -p build/scripts-3.11
-    python3 setup.py install --prefix=/usr --root="${DESTDIR}" --install-lib=/usr/lib64/ --optimize=1 --skip-build
+    python3 setup.py install --root="${DESTDIR}" --install-lib=/usr/lib64/python3 --optimize=1 --skip-build
 }
 

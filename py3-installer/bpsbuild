@@ -3,24 +3,25 @@ name="py3-installer"
 version="0.7.0"
 url="https://github.com/pypa/installer/"
 description="Easily download, build, install, upgrade, and uninstall Python packages"
+license="GPLv3"
 source="https://github.com/pypa/installer/archive/refs/tags/$version.tar.gz"
-depends="python"
+depends="python,py3-build"
+builddepend=""
+md5sums="fcfbaa5603d3e68adbaa8392963cd895"
 group="dev.python"
-
+arch="x86_64"
 
 setup(){
-cd $SOURCEDIR
-
+	echo ""
 }
 
 build(){
-    python3 -m build -wn --skip-dependency-check
+	echo ""
 }
 
 package(){
-	#mkdir -p $DESTDIR/usr/lib64/python3/installer
-    #cp -prfv src/installer/* $DESTDIR/usr/lib64/python3/installer
-	PYTHONPATH=src python3 -m installer --destdir="$DESTDIR" dist/*.whl
-
+	cd $SOURCEDIR
+    mkdir -p $DESTDIR/usr/lib64/python3/installer
+    cp -prfv src/installer/* $DESTDIR/usr/lib64/python3/installer
 }
 
