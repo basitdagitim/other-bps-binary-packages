@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 version="7.2"
 name="nano"
-depends="glibc,readline,ncurses"
+depends="glibc,readline,ncurses,file"
 description="şıkıştırma kütüphanesi"
 source="https://www.nano-editor.org/dist/v7/${name}-${version}.tar.xz"
 groups="app.editor"
