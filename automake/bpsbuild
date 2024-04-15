@@ -2,9 +2,9 @@
 name="automake"
 version="1.16.5"
 description="A GNU tool for automatically configuring source code"
-source=("https://ftp.gnu.org/gnu/automake/automake-${version}.tar.xz")
+source="https://ftp.gnu.org/gnu/automake/automake-${version}.tar.xz"
 depends="autoconf"
-group=(sys.devel)
+group="sys.devel"
 
 
 setup(){
