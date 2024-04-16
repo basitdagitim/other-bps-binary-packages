@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+name="strace"
+version="6.6"
+description="strace is a diagnostic, debugging and instructional userspace utility for Linux"
+source="https://github.com/strace/strace/releases/download/v$version/strace-$version.tar.xz"
+depends="perl"
+makedepend="libunwind"
+group="sys.util"
+setup () {
+    $SOURCEDIR/configure --prefix=/usr \
+        --libdir=/usr/lib64/ \
+        --with-libunwind --enable-mpers=no
+}
+
+build () {
+    make $jobs
+}
+
+package () {
+    make install DESTDIR=$DESTDIR
+}
+
