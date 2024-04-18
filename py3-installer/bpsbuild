@@ -16,12 +16,19 @@ setup(){
 }
 
 build(){
-	echo ""
+	cd $SOURCEDIR
+	python3 -m build -wn --skip-dependency-check
 }
 
 package(){
 	cd $SOURCEDIR
-    mkdir -p $DESTDIR/usr/lib64/python3/installer
-    cp -prfv src/installer/* $DESTDIR/usr/lib64/python3/installer
+	PYTHONPATH=src python3 -m installer --destdir="$DESTDIR" dist/*.whl
+
+	# remove windows entrypoint scripts executables
+	rm "$DESTDIR"/usr/lib/python*/site-packages/installer/_scripts/*.exe
+
+	
+    #mkdir -p $DESTDIR/usr/lib64/python3/installer
+    #cp -prfv src/installer/* $DESTDIR/usr/lib64/python3/installer
 }
 
