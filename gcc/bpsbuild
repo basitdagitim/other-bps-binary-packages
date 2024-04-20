@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 version="13.1.0"
 name="gcc"
-depends="glibc,gmp,mpc,mpfr,binutils,libmpc,zlib,gc,libisl,libiconv"
-builddepend="libisl"
+depends="glibc,gmp,mpfr,binutils,libmpc,zlib"
+builddepend="flex,elfutils,curl,linux-headers"
 description="DOS filesystem tools - provides mkdosfs, mkfs.msdos, mkfs.vfat"
 source="https://ftp.gnu.org/gnu/gcc/gcc-${version}/gcc-${version}.tar.xz"
 groups="sys.devel"
@@ -12,7 +12,6 @@ export CXXFLAGS="-O2 -s"
 unset LDFLAGS
 setup()
 {
-cd $SOURCEDIR
 case $(uname -m) in
   x86_64)
     sed -i.orig '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64
@@ -99,8 +98,4 @@ yedek(){
     done< <(find "./" -type f -iname "*" -print0)	
 
 }
-
-#sphinix autogen expect dejagnu
-#ln -s asm/ /usr/include/asm
-
 
