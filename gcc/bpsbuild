@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 version="13.1.0"
 name="gcc"
-depends="glibc,gmp,mpfr,binutils,libmpc,zlib"
+depends="glibc,gmp,mpfr,binutils,libmpc,zlib,libisl"
 builddepend="flex,elfutils,curl,linux-headers"
 description="DOS filesystem tools - provides mkdosfs, mkfs.msdos, mkfs.vfat"
 source="https://ftp.gnu.org/gnu/gcc/gcc-${version}/gcc-${version}.tar.xz"
