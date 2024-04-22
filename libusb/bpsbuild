@@ -21,6 +21,6 @@ build(){
 }
 
 package(){
-    make install $jobs
+    make DESTDIR=$DESTDIR install $jobs
 }
 
