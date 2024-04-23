@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+name="py3-editables"
+version="0.5"
+description="library for creating editable wheels"
+source=("https://github.com/pfmoore/editables/archive/refs/tags/${version}.tar.gz")
+depends="python"
+group="dev.python"
+
+setup()
+{
+cd $SOURCEDIR
+}
+build(){
+    python3 setup.py build
+	#python3 -m build --wheel --no-isolation
+}
+
+package(){
+    python3 setup.py install --root="${DESTDIR}" --install-lib=/usr/lib64/python3 --optimize=1 --skip-build
+	#python3 -m installer --destdir="$DESTDIR" dist/*.whl
+
+}
+
+

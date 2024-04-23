@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+name="py3-ptyprocess"
+_name="ptyprocess"
+version="0.7.0"
+description="Run a subprocess in a pseudo terminal"
+source=("https://pypi.io/packages/source/p/${_name}/${_name}-${version}.tar.gz")
+depends="python"
+group="dev.python"
+
+setup()
+{
+cd $SOURCEDIR
+}
+build(){
+    python3 setup.py build
+}
+
+package(){
+    python3 setup.py install --root="${DESTDIR}" --install-lib=/usr/lib64/python3 --optimize=1 --skip-build
+}
+
+

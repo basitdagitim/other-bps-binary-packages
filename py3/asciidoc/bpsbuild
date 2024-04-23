@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+name="asciidoc"
+version="10.2.0"
+source="https://github.com/asciidoc-py/asciidoc-py/archive/refs/tags/$version.tar.gz"
+description="A plain text human readable/writable document format "
+depends="python"
+group="dev.python"
+
+setup()
+{
+cd $SOURCEDIR
+}
+build(){
+    python3 setup.py build
+}
+
+package(){
+    python3 setup.py install --root="${DESTDIR}" --install-lib=/usr/lib64/python3 --optimize=1 --skip-build
+}

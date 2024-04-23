@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+name="py3-hotdoc"
+version="0.14.0"
+description="A documentation tool micro-framework"
+source=("https://files.pythonhosted.org/packages/56/ad/c3c7fb2cae9baa369317600d66f41ecbf723867f3e19e5dd56aed09b7ed0/hotdoc-$version.tar.gz")
+depends="python,json-glib"
+group="dev.python"
+
+setup()
+{
+cd $SOURCEDIR
+}
+build(){
+    python3 setup.py build
+}
+
+package(){
+    python3 setup.py install --root="${DESTDIR}" --install-lib=/usr/lib64/python3 --optimize=1 --skip-build
+
+}
+
