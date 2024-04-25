@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name="py3-cairo"
 version="1.26.0"
-source=("https://github.com/pygobject/pycairo/archive/refs/tags/v$version.tar.gz")
+source="https://github.com/pygobject/pycairo/archive/refs/tags/v$version.tar.gz"
 description="Python bindings for the cairo library"
 pyver=$(python3 -c "import sys; print(str( sys.version_info[0]) +\".\"+ str(sys.version_info[1] ))")
 depends="python"$pyver",cairo"
@@ -17,5 +17,8 @@ build(){
 }
 
 package(){
-    python3 setup.py install --root="${DESTDIR}" --install-lib=/usr/lib64/python3 --optimize=1 --skip-build
+    python3 setup.py install --prefix=/usr --root="${DESTDIR}" --install-lib=/usr/lib64/python3.11/site-packages --optimize=1 --skip-build
+    
+    mv $DESTDIR/usr/lib/* $DESTDIR/usr/lib64/
+	rm -rf $DESTDIR/usr/lib
 }

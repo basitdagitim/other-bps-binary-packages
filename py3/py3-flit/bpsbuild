@@ -31,4 +31,8 @@ package(){
         python3 -m installer --destdir="$DESTDIR" dist/*.whl
         cd $cur
     done
+    
+    mkdir -p $DESTDIR/usr/lib64/python3.11
+    mv $DESTDIR/usr/lib/* $DESTDIR/usr/lib64/
+	rm -rf $DESTDIR/usr/lib
 }

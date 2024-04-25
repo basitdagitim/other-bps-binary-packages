@@ -2,7 +2,7 @@
 name="py3-distro"
 version="1.9.0"
 description="A much more elaborate replacement for removed Python\"s platform.linux_distribution() method "
-source=("https://github.com/python-distro/distro/archive/refs/tags/v${version}.tar.gz")
+source="https://github.com/python-distro/distro/archive/refs/tags/v${version}.tar.gz"
 depends="python"
 group="dev.python"
 
@@ -16,5 +16,8 @@ build () {
 
 package () {
     python3 -m installer --destdir="${DESTDIR}" dist/*.whl
+	
+	mv $DESTDIR/usr/lib/* $DESTDIR/usr/lib64/
+	rm -rf $DESTDIR/usr/lib
 }
 

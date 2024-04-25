@@ -1,15 +1,12 @@
 #!/usr/bin/env bash
 name="py3-installer"
 version="0.7.0"
-url="https://github.com/pypa/installer/"
 description="Easily download, build, install, upgrade, and uninstall Python packages"
-license="GPLv3"
 source="https://github.com/pypa/installer/archive/refs/tags/$version.tar.gz"
 depends="python,py3-build"
 builddepend=""
-md5sums="fcfbaa5603d3e68adbaa8392963cd895"
 group="dev.python"
-arch="x86_64"
+
 
 setup(){
 	echo ""
@@ -27,8 +24,8 @@ package(){
 	# remove windows entrypoint scripts executables
 	rm "$DESTDIR"/usr/lib/python*/site-packages/installer/_scripts/*.exe
 
-	
-    #mkdir -p $DESTDIR/usr/lib64/python3/installer
-    #cp -prfv src/installer/* $DESTDIR/usr/lib64/python3/installer
+	mkdir -p $DESTDIR/usr/lib64/python3.11
+	mv $DESTDIR/usr/lib/* $DESTDIR/usr/lib64/
+	rm -rf $DESTDIR/usr/lib
 }
 
