@@ -12,6 +12,7 @@ setup(){
         --libdir=/usr/lib64 \
 		--enable-shared \
 		--disable-debuginfod \
+		--enable-libdebuginfod=dummy \
 		--disable-thread-safety \
 		--disable-valgrind \
 		--disable-nls \
