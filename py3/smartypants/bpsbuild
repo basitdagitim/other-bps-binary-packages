@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name="smartypants"
 version="2.0.1"
-source=("https://github.com/leohemsted/smartypants.py/archive/refs/tags/v$version.tar.gz")
+source="https://github.com/leohemsted/smartypants.py/archive/refs/tags/v$version.tar.gz"
 description="ASCII quote-dot-dash to HTML entity converter"
 depends="python"
 group="dev.python"
@@ -11,9 +11,14 @@ setup()
 cd $SOURCEDIR
 }
 build(){
-    python3 setup.py build
+
+    python3 -m build --wheel
 }
 
 package(){
-    python3 setup.py install --root="${DESTDIR}" --install-lib=/usr/lib64/python3 --optimize=1 --skip-build
+	python3 -m installer --destdir="$DESTDIR" dist/*.whl
+	
+	mkdir -p $DESTDIR/usr/lib64/python3.11
+	mv $DESTDIR/usr/lib/* $DESTDIR/usr/lib64/
+	rm -rf $DESTDIR/usr/lib
 }

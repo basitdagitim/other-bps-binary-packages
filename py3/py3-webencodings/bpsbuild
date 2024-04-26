@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name="py3-webencodings"
 version="0.5.1"
-source=("https://github.com/gsnedders/python-webencodings/archive/v${version}.tar.gz")
+source="https://github.com/gsnedders/python-webencodings/archive/v${version}.tar.gz"
 description="Character encoding for the web"
 depends="python"
 group="dev.python"
@@ -15,6 +15,6 @@ build(){
 }
 
 package(){
-    python3 setup.py install --root="${DESTDIR}" --install-lib=/usr/lib64/python3 --optimize=1 --skip-build
+    python3 setup.py install --prefix=/usr --root="${DESTDIR}" --install-lib=/usr/lib64/python3.11/site-packages --optimize=1 --skip-build
 }
 

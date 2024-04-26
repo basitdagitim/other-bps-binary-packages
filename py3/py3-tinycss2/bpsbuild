@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name="py3-tinycss2"
 version="1.2.1"
-source=("https://github.com/Kozea/tinycss2/archive/refs/tags/v${version}.tar.gz")
+source="https://github.com/Kozea/tinycss2/archive/refs/tags/v${version}.tar.gz"
 description="Low-level CSS parser for Python"
 depends="py3-webencodings,python"
 group="dev.python"
@@ -16,5 +16,9 @@ build(){
 
 package(){
     python3 -m installer -d "$DESTDIR" dist/*.whl
+    
+    mkdir -p $DESTDIR/usr/lib64/python3.11
+	mv $DESTDIR/usr/lib/* $DESTDIR/usr/lib64/
+	rm -rf $DESTDIR/usr/lib
 }
 

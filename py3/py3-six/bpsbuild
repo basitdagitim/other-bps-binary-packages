@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name="py3-six"
 version="1.16.0"
-source=("https://salsa.debian.org/python-team/packages/six/-/archive/debian/$version-5/six-debian-$version-5.tar.gz")
+source="https://github.com/benjaminp/six/archive/refs/tags/$version.tar.gz"
 description="Python 2 and 3 compatibility library"
 depends="python"
 group="dev.python"
@@ -15,7 +15,7 @@ build(){
 }
 
 package(){
-    python3 setup.py install --root="${DESTDIR}" --install-lib=/usr/lib64/python3 --optimize=1 --skip-build
+    python3 setup.py install --prefix=/usr --root="${DESTDIR}" --install-lib=/usr/lib64/python3.11/site-packages --optimize=1 --skip-build
 
 }
 

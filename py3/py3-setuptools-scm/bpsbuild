@@ -1,17 +1,14 @@
 #!/usr/bin/env bash
-name="py3-wheel"
-version="0.42.0"
-url="https://pypi.org/project/wheel/"
-description="A built-package format for Python"
-source="https://github.com/pypa/wheel/archive/refs/tags/${version}.tar.gz"
+name="py3-setuptools-scm"
+version="8.0.4"
+description="Handles managing your python package versions in scm metadata"
+source="https://github.com/pypa/setuptools_scm/archive/refs/tags/v$version.tar.gz"
 depends="python"
-builddepend="py3-installer,py3-flit"
+buildepend="" 
 group="dev.python"
-
 
 setup(){
 cd $SOURCEDIR
-: #  rm -r src/wheel/vendored
 }
 
 build(){
