@@ -1,15 +1,11 @@
 #!/usr/bin/env bash
 name="py3-packaging"
 version="23.2"
-url="https://pypi.org/project/packaging"
 description="Core utilities for Python3 packages"
-license="Apache-2.0 AND BSD-2-Clause"
 source="https://github.com/pypa/packaging/archive/refs/tags/${version}.tar.gz"
 depends="python"
 builddepend="py3-parsing"
-md5sums="0f7bc51196160ee850df25ff7f0f603a"
 group="dev.python"
-arch="x86_64"
 
 
 #export PYTHONPATH=src/packaging
@@ -23,8 +19,10 @@ build(){
 }
 
 package(){
-    #mkdir -p $DESTDIR/usr/lib64/python3
-    #cp -prfv src/* $DESTDIR/usr/lib64/python3
     python3 -m installer --prefix=/usr --destdir="$DESTDIR" dist/*.whl
+    
+    mkdir -p $DESTDIR/usr/lib64/python3.11
+    mv $DESTDIR/usr/lib/* $DESTDIR/usr/lib64/
+	rm -rf $DESTDIR/usr/lib
 }
 

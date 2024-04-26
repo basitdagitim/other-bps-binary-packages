@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 name="py3-ptyprocess"
-_name="ptyprocess"
 version="0.7.0"
 description="Run a subprocess in a pseudo terminal"
-source=("https://pypi.io/packages/source/p/${_name}/${_name}-${version}.tar.gz")
+source="https://github.com/pexpect/ptyprocess/archive/refs/tags/${version}.tar.gz"
+#source="https://pypi.io/packages/source/p/ptyprocess/ptyprocess-${version}.tar.gz"
 depends="python"
+builddepend="py3-wheel,py3-pyproject-hooks"
 group="dev.python"
 
 setup()
@@ -12,11 +13,14 @@ setup()
 cd $SOURCEDIR
 }
 build(){
-    python3 setup.py build
+	python3 -m build --wheel --no-isolation
 }
 
 package(){
-    python3 setup.py install --root="${DESTDIR}" --install-lib=/usr/lib64/python3 --optimize=1 --skip-build
+	python3 -m installer --destdir="$DESTDIR" dist/*.whl
+	
+	mkdir -p $DESTDIR/usr/lib64/python3.11
+	mv $DESTDIR/usr/lib/* $DESTDIR/usr/lib64/
+	rm -rf $DESTDIR/usr/lib
 }
-
 

@@ -15,7 +15,8 @@ build () {
 }
 
 package () {
-    python3 setup.py install --skip-build --root="$DESTDIR"
+    python3 setup.py install --prefix=/usr --root="${DESTDIR}" --install-lib=/usr/lib64/python3.11/site-packages --optimize=1 --skip-build
+    
     rm -r "$DESTDIR"/usr/lib/python3*/site-packages/psutil/tests/
 }
 

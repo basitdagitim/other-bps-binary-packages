@@ -1,15 +1,11 @@
 #!/usr/bin/env bash
 name="py3-parsing"
 version="3.1.2"
-url="https://pypi.org/project/pyparsing/"
 description="Python library for creating PEG parsers"
-license="GPLv3"
 source="https://github.com/pyparsing/pyparsing/releases/download/${version}/pyparsing-${version}.tar.gz"
 depends="python"
 builddepend=""
-md5sums="fadc2f3bf5872bf6310576a86c3566e0"
 group="dev.python"
-arch="x86_64"
 
 setup(){
 	echo ""
@@ -24,6 +20,9 @@ build(){
 package(){
     cd $SOURCEDIR
 	python3 -m installer --destdir="$DESTDIR" dist/*.whl
-
+	
+	mkdir -p $DESTDIR/usr/lib64/python3.11
+	mv $DESTDIR/usr/lib/* $DESTDIR/usr/lib64/
+	rm -rf $DESTDIR/usr/lib
 }
 
