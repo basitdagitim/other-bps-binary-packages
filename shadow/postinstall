@@ -1,0 +1,15 @@
+#!/bin/sh
+
+if [ ! -f /etc/shadow ] ; then
+    echo "root:*::0:::::" > /etc/shadow
+    chmod 600 /etc/shadow
+    chown root /etc/shadow
+    chgrp root /etc/shadow
+fi
+
+if [ ! -f /etc/group ] ; then
+    touch /etc/group
+    chmod 600 /etc/group
+    chown root /etc/group
+    chgrp root /etc/group
+fi

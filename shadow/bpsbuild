@@ -10,14 +10,16 @@ setup(){
 	mkdir -p /tmp/bps/build/files
 	cp -prvf $PACKAGEDIR/files/ /tmp/bps/build/
 	cd $SOURCEDIR
-	autoreconf -fiv
-    ./configure --prefix=/usr \
+	autoreconf -fiv      
+        ./configure --prefix=/usr \
         --libdir=/usr/lib64 \
         --sysconfdir=/etc \
         --bindir=/usr/bin \
         --sbindir=/usr/sbin \
         --disable-account-tools-setuid \
         --without-sssd \
+        --with-fcaps \
+        --with-libpam \
         --without-group-name-max-length \
         --with-bcrypt \
         --with-yescrypt \
@@ -31,12 +33,9 @@ build(){
 package(){
     make install DESTDIR=$DESTDIR
     # remove selinux stuff
-    mkdir -p "${DESTDIR}/etc/pam.d/system-auth.d/"
     mkdir -p "${DESTDIR}/etc/default/"
-    mkdir -p "${DESTDIR}/etc/sysconf.d/"
     sed -i "/.*selinux.*/d" ${DESTDIR}/etc/pam.d/*
     install -vDm 600 ../files/useradd.defaults "${DESTDIR}/etc/default/useradd"
     install -vDm 600 ../files/system-auth "${DESTDIR}/etc/pam.d/system-auth.d/50-shadow"
-    install -vDm 755 ../files/shadow.sysconf ${DESTDIR}/etc/sysconf.d/shadow
 }
 
