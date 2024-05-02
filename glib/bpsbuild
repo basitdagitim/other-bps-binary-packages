@@ -3,7 +3,7 @@ name="glib"
 version="2.78.0"
 description="Low-level core library that forms the basis for projects such as GTK+ and GNOME."
 source="https://download.gnome.org/sources/glib/2.78/glib-${version}.tar.xz"
-depends="bzip2,gettext,python3,py3-packaging"
+depends="bzip2,gettext,python,py3-packaging"
 builddepend="bison,flex,libffi,meson,pcre2,py3-setuptools,py3-docutils,util-linux"
 group="dev.libs"
 
