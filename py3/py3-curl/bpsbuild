@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-name='py3-curl'
+name="py3-curl"
 version="7.45.2"
 source="https://salsa.debian.org/python-team/packages/pycurl/-/archive/upstream/${version}/pycurl-upstream-${version}.tar.gz"
 depends="python,curl"
