@@ -4,7 +4,7 @@ version="3.11.8"
 description="Python meta package"
 source="https://www.python.org/ftp/python/${version}/Python-${version}.tar.xz"
 depends="bzip2,expat,gdbm,libffi,libnsl,libxcrypt,openssl,zlib"
-builddepend="tcl,sqlite,mpdecimal"
+builddepend="tcl,sqlite,mpdecimal,tzdata"
 
 group="dev.lang"
 
@@ -31,5 +31,12 @@ build(){
 
 package(){
     make DESTDIR="${DESTDIR}" EXTRA_CFLAGS="$CFLAGS" install
+	
+	mkdir -p $DESTDIR/usr/lib64
+	mv $DESTDIR/usr/lib/* $DESTDIR/usr/lib64/
+	rm -rf $DESTDIR/usr/lib
+	
+	ln -s python3 "$DESTDIR"/usr/bin/python
+	ln -s python3-config "$DESTDIR"/usr/bin/python-config
 }
 

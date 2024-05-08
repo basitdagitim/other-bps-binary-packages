@@ -2,10 +2,9 @@
 name="py3-sphinx"
 version="7.2.2"
 description="Python Documentation Generator"
-source=("https://github.com/sphinx-doc/sphinx/archive/refs/tags/v${version}.tar.gz")
+source="https://github.com/sphinx-doc/sphinx/archive/refs/tags/v${version}.tar.gz"
 depends="python,py3-babel,py3-docutils,py3-imagesize,py3-jinja,py3-packaging,py3-pygments,py3-requests,py3-snowballstemmer"
-makedepends="py3-build,py3-flit,py3-installer"
-depends="python"
+builddepend="py3-build,py3-flit,py3-installer"
 group="dev.python"
 
 setup()
