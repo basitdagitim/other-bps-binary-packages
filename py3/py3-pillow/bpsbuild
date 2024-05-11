@@ -4,7 +4,7 @@ version="10.2.0"
 source="https://github.com/python-pillow/Pillow/archive/refs/tags/${version}.tar.gz"
 description="Python Imaging Library"
 depends="python3,freetype,lcms2,libtiff,libxcb"
-builddepends="git,py3-build,py3-installer,py3-wheel,py3-setuptools,libwebp"
+builddepend="git,py3-build,py3-installer,py3-wheel,py3-setuptools,libwebp"
 group="dev.python"
 
 setup()
