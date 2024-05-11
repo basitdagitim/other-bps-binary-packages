@@ -4,7 +4,7 @@ version="1.26.0"
 source="https://github.com/pygobject/pycairo/archive/refs/tags/v$version.tar.gz"
 description="Python bindings for the cairo library"
 pyver=$(python3 -c "import sys; print(str( sys.version_info[0]) +\".\"+ str(sys.version_info[1] ))")
-depends="python"$pyver",cairo"
+depends="python3,cairo"
 group="dev.python"
 
 setup()
