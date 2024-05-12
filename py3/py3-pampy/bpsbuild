@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+name="py3-pampy"
+version="0.3.0"
+source="https://files.pythonhosted.org/packages/4c/07/576e0f0ed7c7e8488930a0506fd54926c58b79e45eec400914a8e5edb242/pampy-0.3.0.tar.gz"
+description="A Python interface to the PAM library"
+depends="python"
+
+group="dev.python"
+
+setup()
+{
+cd $SOURCEDIR
+}
+build(){
+    python3 -m build --wheel --no-isolation
+}
+
+package(){
+	python3 -m installer --destdir="${DESTDIR}" dist/*.whl
+	
+	mkdir -p $DESTDIR/usr/lib64/python3.11
+	mv $DESTDIR/usr/lib/* $DESTDIR/usr/lib64/
+	rm -rf $DESTDIR/usr/lib
+}
+
+
