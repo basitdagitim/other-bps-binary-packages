@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+name="py3-trove-classifiers"
+version="2023.11.22"
+description="Canonical source for classifiers on PyPI"
+source="https://github.com/pypa/trove-classifiers/archive/refs/tags/${version}.tar.gz"
+depends=""
+depends=""
+group="dev.python"
+
+setup(){
+	echo ""
+}
+
+build(){
+	cd $SOURCEDIR
+    python3 setup.py build
+}
+
+package(){
+	python3 setup.py install --prefix=/usr --root="${DESTDIR}" --install-lib=/usr/lib64/python3.11/site-packages --optimize=1 --skip-build
+}
+
+

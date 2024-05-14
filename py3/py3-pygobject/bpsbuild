@@ -1,26 +1,21 @@
 #!/usr/bin/env bash
 name="py3-pygobject"
-version="3.48.2"
-url="Python bindings for GObject Introspection"
+version="3.43.1"
 description="Python bindings for GObject Introspection"
 source="https://gitlab.gnome.org/GNOME/pygobject/-/archive/$version/pygobject-$version.tar.gz"
-depends="python$pyver,gobject-introspection"
-builddepend=""
+depends="python,gobject-introspection"
 group="dev.python"
-arch="x86_64"
 
+cd $SOURCEDIR
 setup(){
-    cd $SOURCEDIR
-    meson setup $BUILDDIR \
-        --prefix=/usr \
-        --libdir=/usr/lib \
-        -Db_lto=true \
-        -Ddefault_library=both
+	echo ""
 }
+
 build(){
-    meson compile -C $BUILDDIR
+	cd ../py3-pygobject-$version
+    python3 setup.py $BUILDDIR
 }
 
 package(){
-    DESTDIR="$DESTDIR" meson install -C $BUILDDIR
+    python3 setup.py install --root="${DESTDIR}" --optimize=1 --skip-build
 }
