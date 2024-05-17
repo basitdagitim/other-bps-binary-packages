@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 name="py3-multiprocess"
 version="0.70.16"
-source="https://github.com/uqfoundation/multiprocess/archive/refs/tags/0.70.16.tar.gz"
+source="https://github.com/uqfoundation/multiprocess/archive/refs/tags/$version.tar.gz"
 description="Python bindings for the multiprocess library"
-pyver=$(python3 -c "import sys; print(str( sys.version_info[0]) +\".\"+ str(sys.version_info[1] ))")
-depends="python"$pyver""
+depends="python"
+builddepend=""
 group="dev.python"
 
 setup()
