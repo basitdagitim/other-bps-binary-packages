@@ -3,8 +3,7 @@ name="py3-trove-classifiers"
 version="2023.11.22"
 description="Canonical source for classifiers on PyPI"
 source="https://github.com/pypa/trove-classifiers/archive/refs/tags/${version}.tar.gz"
-depends=""
-depends=""
+depends="python"
 group="dev.python"
 
 setup(){
