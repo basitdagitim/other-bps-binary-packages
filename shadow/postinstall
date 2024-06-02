@@ -5,6 +5,10 @@ if [ ! -f /etc/shadow ] ; then
     chmod 600 /etc/shadow
     chown root /etc/shadow
     chgrp root /etc/shadow
+    else
+    chmod 600 /etc/shadow
+    chown root /etc/shadow
+    chgrp root /etc/shadow
 fi
 
 if [ ! -f /etc/group ] ; then
@@ -12,4 +16,9 @@ if [ ! -f /etc/group ] ; then
     chmod 600 /etc/group
     chown root /etc/group
     chgrp root /etc/group
+    else
+    chmod 600 /etc/group
+    chown root /etc/group
+    chgrp root /etc/group
 fi
+mv /bin/su /bin/su-old
