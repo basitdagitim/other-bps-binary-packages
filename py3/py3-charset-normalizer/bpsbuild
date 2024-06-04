@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+name="charset-normalizer"
+version="3.3.2"
+source="https://files.pythonhosted.org/packages/63/09/c1bc53dab74b1816a00d8d030de5bf98f724c52c1635e07681d312f20be8/charset-normalizer-3.3.2.tar.gz"
+description="A Python interface to the PAM library"
+depends="python"
+
+group="dev.python"
+
+setup()
+{
+cd $SOURCEDIR
+}
+build(){
+    python3 -m build --wheel --no-isolation
+}
+
+package(){
+	python3 -m installer --destdir="${DESTDIR}" dist/*.whl
+	
+	mkdir -p $DESTDIR/usr/lib64/python3.11
+	mv $DESTDIR/usr/lib/* $DESTDIR/usr/lib64/
+	rm -rf $DESTDIR/usr/lib
+}
+
+
