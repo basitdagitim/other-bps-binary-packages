@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-name="py3-charset-normalizer"
-version="3.3.2"
-source="https://files.pythonhosted.org/packages/63/09/c1bc53dab74b1816a00d8d030de5bf98f724c52c1635e07681d312f20be8/charset-normalizer-3.3.2.tar.gz"
+name="py3-certifi"
+version="2024.6.2"
+source="https://files.pythonhosted.org/packages/07/b3/e02f4f397c81077ffc52a538e0aec464016f1860c472ed33bd2a1d220cc5/certifi-2024.6.2.tar.gz"
 description="A Python interface to the PAM library"
 depends="python"
 
