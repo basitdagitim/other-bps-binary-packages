@@ -12,11 +12,11 @@ echo -e "plugdev:x:121:">>/etc/group
 echo -e "netdev:x:122:">>/etc/group
 echo -e "dip:x:123:">>/etc/group
 
-    chmod 600 /etc/group
+    chmod 644 /etc/group
     chown root /etc/group
     chgrp root /etc/group
     else
-    chmod 600 /etc/group
+    chmod 644/etc/group
     chown root /etc/group
     chgrp root /etc/group
 fi
