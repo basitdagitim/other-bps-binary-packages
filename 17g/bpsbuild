@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 version="4.4.2"
 name="17g"
-depends="glibc"
+depends="glibc,py3-defusedxml,py3-parted"
 description="şıkıştırma kütüphanesi"
 source="https://gitlab.com/ggggggggggggggggg/17g/-/archive/4.4.2/17g-4.4.2.tar.gz"
 groups="app.editor"
