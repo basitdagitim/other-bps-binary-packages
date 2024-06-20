@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+version="4.4.2"
+name="17g"
+depends="glibc"
+description="şıkıştırma kütüphanesi"
+source="https://gitlab.com/ggggggggggggggggg/17g/-/archive/4.4.2/17g-4.4.2.tar.gz"
+groups="app.editor"
+setup()
+{
+	cd $SOURCEDIR
+	./configure --prefix=/usr
+	
+}
+build()
+{
+	make 
+}
+package()
+{
+	make install DESTDIR=$DESTDIR
+
+}
+
+
