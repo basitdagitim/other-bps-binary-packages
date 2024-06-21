@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+name="linux-base"
+version="4.9"
+description="A GNU tool for automatically configuring source code"
+source=""
+depends="perl,m4"
+group=(sys.devel)
+
+
+setup(){
+    cd $SOURCEDIR
+    cp -prfv $PACKAGEDIR/usr $SOURCEDIR/
+    
+}
+
+build(){
+    echo ""
+}
+
+package(){
+	cp -prfv usr  ${DESTDIR}/
+	
+}
+

@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-version="2.0.4"
+version="master"
 name="live-installer"
 depends="glibc,py3-defusedxml,py3-parted"
-description="şıkıştırma kütüphanesi"
-source="https://github.com/pardus/pardus-installer/archive/refs/tags/current.tar.gz"
+description="iso yükleme  apps"
+source="https://github.com/basitdagitim/live-installer/archive/refs/heads/master.zip"
 groups="app.editor"
 setup()
 {
