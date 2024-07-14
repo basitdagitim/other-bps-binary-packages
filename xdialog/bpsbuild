@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+version="2.3.1"
+name="xdialog"
+depends="glibc,readline,ncurses"
+description="shell box kütüphanesi"
+source="http://xdialog.free.fr/Xdialog-2.3.1.tar.bz2"
+groups="sys.apps"
+setup()
+{    
+cd $SOURCEDIR
+	../${name}-${version}/configure --prefix=/usr \
+         --libdir=/lib64/ 
+  
+}
+build()
+{
+
+	make 
+}
+package()
+{
+	make install DESTDIR=$DESTDIR
+}
+
+
