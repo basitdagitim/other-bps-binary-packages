@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+name="py3-pyqt-builder"
+version="1.16.4"
+description="The PEP 517 compliant PyQt build system"
+source="https://pypi.python.org/packages/source/P/PyQt-builder/pyqt_builder-$version.tar.gz"
+depends="python,py3-packaging,sip"
+builddepend="py3-pyqt-build,py3-installer,py3-setuptolls-scm,py3-wheel"
+group="dev.python"
+
+setup () {
+	cd $SOURCEDIR
+	
+}
+
+build () {
+    python -m build --wheel --no-isolation
+}
+
+package () {
+    python -m installer --destdir="$DESTDIR" dist/*.whl
+    
+    mkdir -p $DESTDIR/usr/lib64/python3.11
+	mv $DESTDIR/usr/lib/* $DESTDIR/usr/lib64/
+	rm -rf $DESTDIR/usr/lib
+}
+
