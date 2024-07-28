@@ -15,7 +15,6 @@ setup()
 		--libexecdir=/usr/lib64/tar \
 		--localstatedir=/var \
 		--enable-backup-scripts
-
 }
 build()
 {
